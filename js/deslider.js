@@ -10,6 +10,17 @@ export default class Deslider {
     this.timeoutHandle = undefined;
 
     this.container = document.querySelector(container);
+    this.container.style.overflow = 'hidden';
+    this.container.style.position = 'relative';
+    this.container.style.width = '100%';
+
+    /*
+    .has-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+     */
 
     // create options object
     options = options || {}; // if options object not passed in, then set to empty object 
