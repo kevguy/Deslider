@@ -31,7 +31,7 @@ module.exports = [
     name: 'scss-to-css',
     entry: {
       styles: [
-       './css/scss/style.scss'
+       './scss/style.scss'
       ]
     },
     output: {
@@ -60,7 +60,7 @@ module.exports = [
       ]
     },
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'style.min.css'
     },
     module: {
@@ -93,7 +93,7 @@ module.exports = [
       ]
     },
     output: {
-      path: path.resolve(__dirname, 'build'),  // ./build
+      path: path.resolve(__dirname, 'dist'),  // ./build
       filename: '[name].bundle.js',
       library: 'deslider',
       libraryTarget: 'umd'

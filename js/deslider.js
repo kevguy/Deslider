@@ -1,5 +1,5 @@
 // let Hammer = require('../node_modules/hammerjs/hammer.min.js');
-import Hammer from '../node_modules/hammerjs/hammer.js';
+import Hammer from '../lib/hammerjs/hammer.js';
 
 export default class Deslider {
   constructor(imgSources, container, options){
