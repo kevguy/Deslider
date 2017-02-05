@@ -1,0 +1,20 @@
+{
+  "name": "deslider",
+  "description": "A slideshow plugin",
+  "main": "index.js",
+  "authors": [
+    "Kev Lai"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "slideshow"
+  ],
+  "homepage": "https://github.com/kevguy/Deslider",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
