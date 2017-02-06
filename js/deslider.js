@@ -9,10 +9,20 @@ export default class Deslider {
     this.activeSlide = 0;
     this.timeoutHandle = undefined;
 
+    this.intervals = [];
+
+    this.containerName = container;
+
     this.container = document.querySelector(container);
     this.container.style.overflow = 'hidden';
     this.container.style.position = 'relative';
     this.container.style.width = '100%';
+
+    this.mouseOverEventListener = undefined;
+    this.mouseOutEventListener = undefined;
+    this.fullScreenEventListener = undefined;
+    this.nextEventListener = undefined;
+    this.prevEventListener = undefined;
 
     // create options object
     options = options || {}; // if options object not passed in, then set to empty object 
@@ -77,11 +87,11 @@ export default class Deslider {
   }
 
   createEventListeners(){
-    this.container.querySelector('.deslider-next').addEventListener('click', () => {
+    this.nextEventListener = this.container.querySelector('.deslider-next').addEventListener('click', () => {
       this.goToSlide(this.activeSlide + 1);
     }, false);
 
-    this.container.querySelector('.deslider-prev').addEventListener('click', () => {
+    this.prevEventListener = this.container.querySelector('.deslider-prev').addEventListener('click', () => {
       this.goToSlide(this.activeSlide - 1);
     }, false);
 
@@ -117,7 +127,7 @@ export default class Deslider {
   }
 
   goToSlide(number){
-    console.log('goToSlide ', number);
+    //console.log('goToSlide ', number);
     if (this.options.repeat === true){
       if (number < 0){
         this.activeSlide = this.slideCount - 1;
@@ -164,22 +174,22 @@ export default class Deslider {
       //console.log(e);
       if (e.isFinal){
         if (e.velocityX > 1){
-          console.log('e.velocityX > 1');
+          //console.log('e.velocityX > 1');
           this.goToSlide(this.activeSlide - 1);
         } else if (e.velocityX < -1){
-          console.log('e.velocityX < -1');
+          //console.log('e.velocityX < -1');
           this.goToSlide(this.activeSlide + 1);
         } else {
           if( percentage <= -( this.sensitivity / this.slideCount ) ){
-            console.log('percentage <= -( this.sensitivity / this.slideCount )');
+            //console.log('percentage <= -( this.sensitivity / this.slideCount )');
             this.goToSlide( this.activeSlide + 1 );
           }
           else if( percentage >= ( this.sensitivity / this.slideCount ) ){
-            console.log('percentage >= ( this.sensitivity / this.slideCount )');
+            //console.log('percentage >= ( this.sensitivity / this.slideCount )');
             this.goToSlide( this.activeSlide - 1 );
           }
           else{
-            console.log('else');
+            //console.log('else');
             this.goToSlide( this.activeSlide );
           }
         }
@@ -210,7 +220,7 @@ export default class Deslider {
     let fsControl = document.createElement("span");
     fsControl.classList.add('deslider-fullscreen');
     container.appendChild(fsControl);
-    container.querySelector('.deslider-fullscreen').addEventListener('click', () => {
+    this.fullScreenEventListener = container.querySelector('.deslider-fullscreen').addEventListener('click', () => {
       this.toggleFullScreen(container);
     }, false);
   }
@@ -242,25 +252,65 @@ export default class Deslider {
     }
   } // end toggleFullScreen
 
-  autoCycle(speed, pauseOnHover){
-    this.interval = window.setInterval(() => {
-          this.goToSlide(this.activeSlide + 1); // increment & show
-        }, speed);
+  autoCycle(speed, pauseOnHover){ 
+    this.mouseOverHandler = () => {
+      this.intervals.map((item)=>{
+        //console.log('clearing intervals');
+        clearInterval(item);
+      })
+    };
+
+    this.mouseOutHandler = () => {
+      this.intervals.map((item) => {
+        //console.log('clearing intervals');
+        clearInterval(item);
+      });
+      //this.interval = clearInterval(this.interval);
+      this.intervals.push(setInterval(() => {
+        this.goToSlide(this.activeSlide + 1); // increment & show
+      }, speed));
+    };
+
+    this.intervals.map((item) => {
+      clearInterval(item);
+    });
+    
+    this.intervals.push(setInterval(() => {
+      this.goToSlide(this.activeSlide + 1); // increment & show
+    }, speed));
 
     if (pauseOnHover){
-      this.container.addEventListener('mouseover', () => {
-        this.interval = clearInterval(this.interval);
-      }, false);
-      this.container.addEventListener('mouseout', () => {
-        this.interval = window.setInterval(() => {
-          this.goToSlide(this.activeSlide + 1); // increment & show
-        }, speed);
-      }, false);
+      this.mouseOverEventListener = this.container.addEventListener('mouseover', 
+          this.mouseOverHandler, false);
+      this.mouseOutEventListener = this.container.addEventListener('mouseout',
+          this.mouseOutHandler, false);
     } // end pauseonhover
   }
 
   stop(){
-    this.interval = clearInterval(this.interval);
+    this.intervals.map((item) => {
+      clearInterval(item);
+    });
+    //console.log(this.intervals);
+
+    this.container.removeEventListener(this.mouseOverHandler, false);
+    this.container.removeEventListener(this.mouseOutHandler, false);
+
+    if (this.containerName.charAt(0) === '#'){
+      let el = document.getElementById(this.containerName.substring(1)),
+        elClone = el.cloneNode(true);
+
+      el.parentNode.replaceChild(elClone, el);
+    } else {
+      let elClone = this.container.cloneNode(true); 
+      // let el = document.getElementsByClassName(this.containerName.substring(1)),
+      //   elClone = el[0].cloneNode(true);
+      this.container.parentNode.replaceChild(elClone, this.container);
+      // el.parentNode.replaceChild(elClone, el[0]);
+
+    }
+
+    this.container = document.querySelector(this.containerName);
     while (this.container.firstChild) {
       this.container.removeChild(this.container.firstChild);
     }
