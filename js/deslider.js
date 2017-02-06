@@ -14,14 +14,6 @@ export default class Deslider {
     this.container.style.position = 'relative';
     this.container.style.width = '100%';
 
-    /*
-    .has-slider {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-     */
-
     // create options object
     options = options || {}; // if options object not passed in, then set to empty object 
     options.auto = options.auto || true; // if options.auto object not passed in, then set to false
@@ -269,6 +261,9 @@ export default class Deslider {
 
   stop(){
     this.interval = clearInterval(this.interval);
+    while (this.container.firstChild) {
+      this.container.removeChild(this.container.firstChild);
+    }
   }
 };
 
