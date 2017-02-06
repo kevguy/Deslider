@@ -13,27 +13,27 @@
 7 silly cache add   rawSpec: '.',
 7 silly cache add   spec: '/Users/kevlai/Google Drive/My Work/ProgrammingProjects/SnagR/SnagR-Web-fork/RequireJSSPA/node_modules/deslider',
 7 silly cache add   type: 'directory' }
-8 verbose addLocalDirectory /Users/kevlai/.npm/deslider/1.4.0/package.tgz not in flight; packing
+8 verbose addLocalDirectory /Users/kevlai/.npm/deslider/1.3.0/package.tgz not in flight; packing
 9 verbose correctMkdir /Users/kevlai/.npm correctMkdir not in flight; initializing
-10 info lifecycle deslider@1.4.0~prepublish: deslider@1.4.0
-11 silly lifecycle deslider@1.4.0~prepublish: no script for prepublish, continuing
-12 info lifecycle deslider@1.4.0~prepare: deslider@1.4.0
-13 silly lifecycle deslider@1.4.0~prepare: no script for prepare, continuing
-14 verbose tar pack [ '/Users/kevlai/.npm/deslider/1.4.0/package.tgz',
+10 info lifecycle deslider@1.3.0~prepublish: deslider@1.3.0
+11 silly lifecycle deslider@1.3.0~prepublish: no script for prepublish, continuing
+12 info lifecycle deslider@1.3.0~prepare: deslider@1.3.0
+13 silly lifecycle deslider@1.3.0~prepare: no script for prepare, continuing
+14 verbose tar pack [ '/Users/kevlai/.npm/deslider/1.3.0/package.tgz',
 14 verbose tar pack   '/Users/kevlai/Google Drive/My Work/ProgrammingProjects/SnagR/SnagR-Web-fork/RequireJSSPA/node_modules/deslider' ]
-15 verbose tarball /Users/kevlai/.npm/deslider/1.4.0/package.tgz
+15 verbose tarball /Users/kevlai/.npm/deslider/1.3.0/package.tgz
 16 verbose folder /Users/kevlai/Google Drive/My Work/ProgrammingProjects/SnagR/SnagR-Web-fork/RequireJSSPA/node_modules/deslider
-17 verbose addLocalTarball adding from inside cache /Users/kevlai/.npm/deslider/1.4.0/package.tgz
+17 verbose addLocalTarball adding from inside cache /Users/kevlai/.npm/deslider/1.3.0/package.tgz
 18 verbose correctMkdir /Users/kevlai/.npm correctMkdir not in flight; initializing
-19 silly cache afterAdd deslider@1.4.0
-20 verbose afterAdd /Users/kevlai/.npm/deslider/1.4.0/package/package.json not in flight; writing
+19 silly cache afterAdd deslider@1.3.0
+20 verbose afterAdd /Users/kevlai/.npm/deslider/1.3.0/package/package.json not in flight; writing
 21 verbose correctMkdir /Users/kevlai/.npm correctMkdir not in flight; initializing
-22 verbose afterAdd /Users/kevlai/.npm/deslider/1.4.0/package/package.json written
+22 verbose afterAdd /Users/kevlai/.npm/deslider/1.3.0/package/package.json written
 23 silly publish { _args:
 23 silly publish    [ [ [Object],
 23 silly publish        '/Users/kevlai/Google Drive/My Work/ProgrammingProjects/SnagR/SnagR-Web-fork/RequireJSSPA' ] ],
 23 silly publish   _from: '.',
-23 silly publish   _id: 'deslider@1.4.0',
+23 silly publish   _id: 'deslider@1.3.0',
 23 silly publish   _inCache: true,
 23 silly publish   _location: '/deslider',
 23 silly publish   _nodeVersion: '4.5.0',
@@ -53,7 +53,7 @@
 23 silly publish      type: 'tag' },
 23 silly publish   _requiredBy: [ '#USER', '/' ],
 23 silly publish   _resolved: 'https://registry.npmjs.org/deslider/-/deslider-1.0.0.tgz',
-23 silly publish   _shasum: '068301e7e8f61faf6c62c9466be4ac41468ceaab',
+23 silly publish   _shasum: '824c378bc8a784e844872759a82cfbb7fe17600c',
 23 silly publish   _shrinkwrap: null,
 23 silly publish   _spec: 'deslider',
 23 silly publish   _where: '/Users/kevlai/Google Drive/My Work/ProgrammingProjects/SnagR/SnagR-Web-fork/RequireJSSPA',
@@ -96,11 +96,11 @@
 23 silly publish   scripts:
 23 silly publish    { babel: 'babel --presets es2015 js/deslider.js -o build/deslider.bundle.js',
 23 silly publish      webpack: 'webpack' },
-23 silly publish   version: '1.4.0',
-23 silly publish   gitHead: '60c48a90da50e2cbe64fc50232f50626dc397332',
+23 silly publish   version: '1.3.0',
+23 silly publish   gitHead: 'bf12f39f31fa87fe8993bc1e696243f1acaafe88',
 23 silly publish   dependencies: {} }
-24 info lifecycle deslider@1.4.0~prepublishOnly: deslider@1.4.0
-25 silly lifecycle deslider@1.4.0~prepublishOnly: no script for prepublishOnly, continuing
+24 info lifecycle deslider@1.3.0~prepublishOnly: deslider@1.3.0
+25 silly lifecycle deslider@1.3.0~prepublishOnly: no script for prepublishOnly, continuing
 26 verbose getPublishConfig undefined
 27 silly mapToRegistry name deslider
 28 silly mapToRegistry using default registry
@@ -115,29 +115,29 @@
 30 silly mapToRegistry   type: 'tag' }
 31 silly mapToRegistry uri https://registry.npmjs.org/deslider
 32 verbose publish registryBase https://registry.npmjs.org/
-33 silly publish uploading /Users/kevlai/.npm/deslider/1.4.0/package.tgz
+33 silly publish uploading /Users/kevlai/.npm/deslider/1.3.0/package.tgz
 34 verbose request uri https://registry.npmjs.org/deslider
 35 verbose request sending authorization for write operation
-36 info attempt registry request try #1 at 5:42:24 PM
+36 info attempt registry request try #1 at 5:49:45 PM
 37 verbose request using bearer token for auth
-38 verbose request id c4c34ed8b65ad8d8
+38 verbose request id ead447c7341ed018
 39 http request PUT https://registry.npmjs.org/deslider
 40 http 403 https://registry.npmjs.org/deslider
 41 verbose headers { 'content-type': 'application/json',
 41 verbose headers   'cache-control': 'max-age=300',
 41 verbose headers   'content-length': '95',
 41 verbose headers   'accept-ranges': 'bytes',
-41 verbose headers   date: 'Mon, 06 Feb 2017 09:42:26 GMT',
+41 verbose headers   date: 'Mon, 06 Feb 2017 09:49:46 GMT',
 41 verbose headers   via: '1.1 varnish',
 41 verbose headers   connection: 'keep-alive',
-41 verbose headers   'x-served-by': 'cache-hkg6820-HKG',
+41 verbose headers   'x-served-by': 'cache-hkg6825-HKG',
 41 verbose headers   'x-cache': 'MISS',
 41 verbose headers   'x-cache-hits': '0',
-41 verbose headers   'x-timer': 'S1486374145.032153,VS0,VE1625',
+41 verbose headers   'x-timer': 'S1486374585.204239,VS0,VE1629',
 41 verbose headers   vary: 'Accept-Encoding' }
 42 verbose request invalidating /Users/kevlai/.npm/registry.npmjs.org/deslider on PUT
 43 error publish Failed PUT 403
-44 verbose stack Error: "You cannot publish over the previously published version 1.4.0." : deslider
+44 verbose stack Error: "You cannot publish over the previously published version 1.3.0." : deslider
 44 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
 44 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
 44 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
@@ -156,7 +156,7 @@
 50 error node v4.5.0
 51 error npm  v4.0.5
 52 error code E403
-53 error "You cannot publish over the previously published version 1.4.0." : deslider
+53 error "You cannot publish over the previously published version 1.3.0." : deslider
 54 error If you need help, you may report this error at:
 54 error     <https://github.com/npm/npm/issues>
 55 verbose exit [ 1, true ]
