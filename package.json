@@ -97,7 +97,7 @@
     "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
     "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
   },
-  "version": "1.5.0",
+  "version": "1.5.1",
   "dependencies": {
     "hammerjs": "^2.0.8"
   }
