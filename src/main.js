@@ -4,4 +4,5 @@
  */
 
 // require("../css/style.scss");
-module.exports = require('./deslider.js').default;
+import Deslider from './deslider';
+module.exports = Deslider;

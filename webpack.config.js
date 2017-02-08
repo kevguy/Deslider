@@ -1,8 +1,57 @@
+
+var webpack = require('webpack');
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var path = require('path');
+var env = require('yargs').argv.mode;
+
+var libraryName = 'Deslider';
+
+var plugins = [], outputFile;
+
+if (env === 'build') {
+  plugins.push(new UglifyJsPlugin({ minimize: true }));
+  outputFile = libraryName + '.min.js';
+} else {
+  outputFile = libraryName + '.js';
+}
+
+var config = {
+  entry: __dirname + '/src/main.js',
+  devtool: 'source-map',
+  output: {
+    path: __dirname + '/lib',
+    filename: outputFile,
+    library: libraryName,
+    libraryTarget: 'umd'
+  },
+  module: {
+    loaders: [
+      {
+        test: /(\.jsx|\.js)$/,
+        loader: 'babel',
+        exclude: /(node_modules|bower_components)/
+      },
+      // {
+      //   test: /(\.jsx|\.js)$/,
+      //   loader: "eslint-loader",
+      //   exclude: /node_modules/
+      // }
+    ]
+  },
+  resolve: {
+    root: path.resolve('./src'),
+    extensions: ['', '.js']
+  },
+  plugins: plugins
+};
+
+module.exports = config;
+
 /*
  *  __dirname refers to the diretory where this webpack.config.js lives
  * https://julienrenaux.fr/2015/03/30/introduction-to-webpack-with-practical-examples/
  */
-
+/*
 require('babel-polyfill');
 const path = require('path');
 const webpack = require('webpack');
@@ -88,8 +137,8 @@ module.exports = [
     entry: {
       deslider: [
         // configuration for babel6
-        'babel-polyfill',
-        './js/main.js'
+        // 'babel-polyfill',
+        './src/main.js'
       ]
     },
     output: {
@@ -114,4 +163,4 @@ module.exports = [
     devtool: 'source-map'
   }
 ];
- 
+*/
