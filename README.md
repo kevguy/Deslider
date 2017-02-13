@@ -1,5 +1,5 @@
 # Deslider
-Deslider is a feature-rich slideshow library that aims for easy use.
+Deslider is a highly configurable lightweight slideshow library written with finger gesture support
 
 ## Table of contents
 - [Live Demo](#live-demo)
