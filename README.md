@@ -82,3 +82,5 @@ At the end of your page you need to initialize Deslider by running the following
   var myDeslider = new Deslider(imgSources, containerId, options);
   ```
   
+## License
+[MIT License](https://github.com/kevguy/Deslider/blob/master/LICENSE.txt)
