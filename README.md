@@ -51,8 +51,10 @@ At the end of your page you need to initialize Deslider by running the following
 * `container` (*String*): the `id` of the container  
 * `options` (*Object*, Optional): configuration  
  * `auto` (*Object*): the existence of this object enables Deslider's automatic animation and defines its behaviors  
-   * `speed` (*Number*): the number of time(ms) for switching to another image automatically  
-   * `pauseOnHover` (*Boolean*): enables/disables the animation when the mouse hovers on Deslider  
+   * `speed` (*Number*): the number of time(ms) for switching to another image automatically   
+   
+   * `pauseOnHover` (*Boolean*): enables/disables the animation when the mouse hovers on Deslider    
+    
  * `fullScreen` (*Boolean*): enables/disables the button that lets user toggle between full-screen mode and normal mode  
  * `swipe` (Boolean): enables/disables the feature that lets swipe the slideshow for another image  
  * `pagination` (*Boolean*): shows/hides the pagination bar  
