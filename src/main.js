@@ -3,6 +3,6 @@
 	http://stackoverflow.com/questions/37912857/exporting-a-class-with-webpack-and-babel-not-working
  */
 
-// require("../css/style.scss");
+require('../scss/style.scss');
 import Deslider from './deslider';
 module.exports = Deslider;

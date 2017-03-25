@@ -323,6 +323,6 @@ export default class Deslider {
       this.container.removeChild(this.container.firstChild);
     }
   }
-};
+}
 
 module.exports = Deslider;

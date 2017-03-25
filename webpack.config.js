@@ -1,3 +1,4 @@
+var path = require('path');
 
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
@@ -6,17 +7,32 @@ var env = require('yargs').argv.mode;
 
 var libraryName = 'Deslider';
 
-var plugins = [], outputFile;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+var plugins = [];
+
+var outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
   outputFile = libraryName + '.min.js';
+
+  plugins.push(new ExtractTextPlugin("../css/style.min.css"));
+
+  plugins.push(new OptimizeCssAssetsPlugin({
+      //assetNameRegExp: /\.min\.css$/,
+      // default is /\.css$/g
+      cssProcessorOptions: { discardComments: { removeAll: true } }
+  }));
 } else {
+  plugins.push(new ExtractTextPlugin("../css/style.css"));
   outputFile = libraryName + '.js';
 }
 
 var config = {
-  entry: __dirname + '/src/main.js',
+  watch: true,
+  entry: [ __dirname + '/src/main.js' ],
   devtool: 'source-map',
   output: {
     path: __dirname + '/lib',
@@ -25,21 +41,33 @@ var config = {
     libraryTarget: 'umd'
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'jshint-loader'
+      }
+    ],
     loaders: [
       {
         test: /(\.jsx|\.js)$/,
-        loader: 'babel',
+        loader: "babel!eslint-loader",
         exclude: /(node_modules|bower_components)/
       },
       {
-        test: /(\.jsx|\.js)$/,
-        loader: "eslint-loader",
-        exclude: /node_modules/
-      }
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!sass-loader")
+      },
     ]
   },
   resolve: {
-    root: path.resolve('./src'),
+    // root: path.resolve('./src'),
     extensions: ['', '.js']
   },
   plugins: plugins
@@ -52,13 +80,7 @@ module.exports = config;
  * https://julienrenaux.fr/2015/03/30/introduction-to-webpack-with-practical-examples/
  */
 /*
-require('babel-polyfill');
-const path = require('path');
-const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-module.exports = [
   // https://github.com/webpack/webpack/issues/2764
   // http://stackoverflow.com/questions/29210325/webpack-sass-where-is-the-css-file
   // http://stackoverflow.com/questions/35637184/minify-css-from-webpacks-extracttextplugin-and-style-loader
@@ -76,91 +98,5 @@ module.exports = [
   // http://krasimirtsonev.com/blog/article/javascript-library-starter-using-webpack-es6
   // https://www.sitepoint.com/transpiling-es6-modules-to-amd-commonjs-using-babel-gulp/
   // http://guybedford.com/practical-workflows-for-es6-modules
-  {
-    name: 'scss-to-css',
-    entry: {
-      styles: [
-       './scss/style.scss'
-      ]
-    },
-    output: {
-        path: path.resolve(__dirname, 'css'),
-        filename: 'style.css'
-    },
-    module: {
-      loaders: [{
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          loader: "css-loader!sass-loader",
-        })
-      }]
-    },
-    plugins: [
-      new ExtractTextPlugin("style.css"),
-    ],
-    devtool: 'source-map'
-  },
-  {
-    name: 'minify-css',
-    entry: {
-      styles: [
-       './css/style.css'
-      ]
-    },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'style.min.css'
-    },
-    module: {
-      loaders: [{ 
-        test: /\.css$/, 
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          loader: "css-loader",
-        }) 
-      }]
-    },
-    plugins: [
-      new ExtractTextPlugin("style.min.css"),
-      new OptimizeCssAssetsPlugin({
-        assetNameRegExp: /\.css$/g,
-        cssProcessor: require('cssnano'),
-        cssProcessorOptions: { discardComments: {removeAll: true } },
-        canPrint: true
-      })
-    ],
-    devtool: 'source-map'
-  },
-  {
-    name: "bundle-js",
-    entry: {
-      deslider: [
-        // configuration for babel6
-        // 'babel-polyfill',
-        './src/main.js'
-      ]
-    },
-    output: {
-      path: path.resolve(__dirname, 'dist'),  // ./build
-      filename: '[name].bundle.js',
-      library: 'deslider',
-      libraryTarget: 'umd'
-    },
-    module: {
-      rules: [{
-        test: /\.js$/,
-        loader: ['babel-loader', 'eslint-loader'],
-        exclude: /node_modules/,
-        // query: {
-        //   presets: ['es2015']
-        // }
-      }]
-    },
-    stats: {
-      colors: true
-    },
-    devtool: 'source-map'
-  }
-];
+ 
 */

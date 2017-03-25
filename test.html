@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="lib/styles.css">
+	
+</head>
+<body>
+	<div class="container">
+		<div id="dummy" class="has-slider" tabindex="1" autofocus="autofocus">
+		</div>
+	</div>
+	<script src="lib/Deslider.js"></script>
+	<script type="text/javascript">
+		var imgList = ["https://i.imgsafe.org/91fc93dd5f.jpg",
+               "https://i.imgsafe.org/908139a625.jpg",
+               "https://i.imgsafe.org/908110cddc.jpg",
+               "https://i.imgsafe.org/9081128666.jpg",
+               "https://i.imgsafe.org/90814389a7.jpg",
+               "https://i.imgsafe.org/9081501b07.jpg",
+               "https://i.imgsafe.org/b1d3b20c50.jpg",
+               "https://i.imgsafe.org/b1d3c7f20a.jpg",
+               "https://i.imgsafe.org/b1d3c5623f.jpg",
+               "https://i.imgsafe.org/9080e0b536.jpg"
+              ];
+	let imgObj = [];
+	imgList.map(function(link, idx){
+	  imgObj.push({
+	    link,
+	    caption: "image " + idx
+	  });
+	})
+	let slideshow = new Deslider(imgObj, '#dummy');
+
+	// let slideshow2 = new Deslider(imgObj, '#dummy2');
+
+	</script>
+</body>
+</html>
+
+
